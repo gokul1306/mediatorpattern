@@ -1,6 +1,7 @@
 
 *.csproj
 Mediator pattern/bin/
+Mediator pattern/appsettings.json
 Mediator pattern/obj/
 Mediator pattern/.vscode/
 Mediator pattern/Migrations/
