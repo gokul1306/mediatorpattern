@@ -47,7 +47,7 @@ namespace Mediator_pattern.CQRS
             }
             public async Task<IEnumerable<Bidding>> Handle(GetAllBiddingQuery query, CancellationToken cancellationToken)
             {
-                var BiddingList = await _context.Bidding.ToListAsync();
+                var BiddingList = await _context.Bidding.Include("Product").Include("User").ToListAsync();
                 return BiddingList;
             }
         }
