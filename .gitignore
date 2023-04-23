@@ -1,1 +1,5 @@
 
+*.csproj
+Mediator pattern/Mediator pattern.csproj
+Mediator pattern/bin/
+Mediator pattern/.vscode/
