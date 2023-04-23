@@ -1,4 +1,5 @@
 
 *.csproj
 Mediator pattern/bin/
+Mediator pattern/obj/
 Mediator pattern/.vscode/
