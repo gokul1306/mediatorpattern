@@ -1,0 +1,63 @@
+<nav class="navbar bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand"><img src="../favicon.ico" alt=""> Product</a>
+    </div>
+</nav>
+
+<div class="container pt-4">
+  <form class="d-flex col-md-4 search-marginleft" role="search">
+    <input class="form-control me-2" [(ngModel)]="searchText" type="search" placeholder="Search" aria-label="Search" >
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+</div>
+
+<div class="container pt-4">
+  <div class="display-margin card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Product Name</h5>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Category</li>
+      <li class="list-group-item">Starting Bid Price</li>
+      <li class="list-group-item">Bid End Date</li>
+    </ul>
+  </div>
+  <!-- <div class="display-margin" >
+    <div > 
+      <label class="h4">Product Name: </label>{{product_name}}
+    </div>
+  <br>
+    <div > 
+      <label class="h4">Category: </label>{{category}}
+    </div>
+    <br>
+    <div > 
+      <label class="h4">BidEndDate: </label>{{BidEndDate}}
+    </div>
+    <br>
+    <div > 
+      <label class="h4">Bid Start price: </label>{{bidstartprice}}
+    </div>
+    <br>
+  </div> -->
+</div>
+
+<div class="container pt-4">
+  <table class="table  table-striped " style="width: 96%;height:max-content;">
+    <thead>
+        <tr class="text-center">
+            <th>Bid Amount</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+        </tr>
+    </thead>
+    <tbody>
+       <tr class="text-center">
+            
+        </tr>
+    </tbody>
+</table>
+</div>
