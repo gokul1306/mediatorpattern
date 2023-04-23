@@ -16,7 +16,15 @@ namespace Mediator_pattern.Controllers
      [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await mediator.Send(new GetAllBiddingQuery()));
+            var result = await mediator.Send(new GetAllBiddingQuery());
+            var answer = result.Select(Bidding => new{
+                id = Bidding.Id,
+                bidAmount = Bidding.BidAmount,
+                name = Bidding.User.FirstName,
+                email = Bidding.User.Email,
+                phoneNumber = Bidding.User.PhoneNumber,
+            });
+            return Ok(answer);
         }
         [HttpPost("Create")]
         public async Task<IActionResult> Create(CreateBiddingCommand command)
