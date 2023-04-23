@@ -4,4 +4,6 @@ Mediator pattern/bin/
 Mediator pattern/obj/
 Mediator pattern/.vscode/
 Mediator pattern/Migrations/
-
+Product/.angular/
+Product/.vscode/
+Product/node_modules/
