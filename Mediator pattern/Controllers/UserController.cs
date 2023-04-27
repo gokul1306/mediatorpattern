@@ -1,5 +1,7 @@
 
 using Mediator_pattern.CQRS;
+using Mediator_pattern.Models;
+using Mediator_pattern.TokenService;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +12,11 @@ namespace Mediator_pattern.Controllers
     public class UserController : ControllerBase
     {
         private IMediator mediator;
-        public UserController(IMediator _mediator)
+        private readonly TokenServices _tokenservice;
+        public UserController(IMediator _mediator,TokenServices tokenservice)
         {
             mediator = _mediator;
+            _tokenservice=tokenservice;
         }
           [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
@@ -40,6 +44,11 @@ namespace Mediator_pattern.Controllers
         {
             
             return Ok(await mediator.Send(new DeleteUserByIdCommand { Id = id }));
+        }
+        [HttpPost]
+        public  IActionResult Login(string Email,string Password)
+        {
+            return Ok(_tokenservice.AuthToken(Email,Password));
         }
     }
 }

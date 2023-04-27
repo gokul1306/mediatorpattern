@@ -1,0 +1,55 @@
+<h3>Add Product Form</h3><br>
+<div class="formcard">
+<div class="row">
+    <div class="col-xs-12 " style="padding-left: 40px;">
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <div class="col-sm-8 form-group inputbox">
+                <label >ProductName</label>
+                <input  formControlName="productname" type="text" id="productName" class="form-control">
+            </div>
+            <br>
+            <div class="col-sm-8 form-group inputbox">
+                <label >ShortDescription</label>
+                <input  formControlName="shortDescription" type="text" id="shortDescription" class="form-control">
+            </div>
+            <br>
+            <div class="col-sm-8 form-group inputbox">
+                <label >DetailedDescription</label>
+                <input  formControlName="detailedDescription" type="text" id="detailedDescription" class="form-control">
+            </div>
+            <br>
+            <div class="col-sm-8 form-group inputbox">
+                <label >StartingPrice</label>
+                <input  formControlName="price" type="number" id="startingPrice" class="form-control">
+            </div>
+            <br>
+            <div class="col-sm-8 form-group inputbox">
+                <label >BidEndDate</label>
+                <input  formControlName="bidEndDate" type="date" id="bidEndDate" class="form-control">
+            </div>
+            <br>
+            <div class="col-md-8 dropdownwidth">
+                <label class="pb-3">Category</label>
+                <select formControlName="category" 
+                    id="courseDesc" class="form-control form-control-lg" >
+                    <option selected>category</option>
+                    <!-- <option selected>Global </option> -->
+                    <option *ngFor="let item of option " value={{item.values}}>{{item.values}}</option>
+                </select>
+            </div>
+            <br>
+            <br>
+            <div class="col-xs-12">
+                <button  
+                  class="btn btn-dark pe-4 px-4 hover sidemovebutton" 
+                  type="submit">Add</button> &nbsp;
+                  <button  
+                  class="btn btn-dark pe-4 px-4 hover " routerLink="/Bidding"
+                  type="submit">Cancel</button>
+              </div>
+             
+        </form>
+    </div>
+</div>
+</div>
+

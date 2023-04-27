@@ -8,6 +8,7 @@ namespace Mediator_pattern.Models
         public int Id{get;set;}
         public string ProductName{get;set;}
         public string ShortDescription {get; set;}
+        public string DetailedDescription{get;set;}
         public string Category{get;set;}
         public int StratingPrice{get;set;}
         public DateTime BidEndDate{get;set;}

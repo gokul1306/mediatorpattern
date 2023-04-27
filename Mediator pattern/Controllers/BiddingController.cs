@@ -1,9 +1,11 @@
 using Mediator_pattern.CQRS;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Mediator_pattern.Controllers
 {
+    
      [Route("api/[controller]")]
     [ApiController]
     public class BiddingController : ControllerBase
@@ -13,6 +15,7 @@ namespace Mediator_pattern.Controllers
         {
             mediator = _mediator;
         }
+       
      [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
@@ -26,22 +29,28 @@ namespace Mediator_pattern.Controllers
             });
             return Ok(answer);
         }
+        [AllowAnonymous]
         [HttpPost("Create")]
         public async Task<IActionResult> Create(CreateBiddingCommand command)
         {
+            int currentUser=Convert.ToInt32(User.FindFirst("UserId")?.Value);
+            command.UserId=currentUser;
             return Ok(await mediator.Send(command));
         }
+        [AllowAnonymous]
         [HttpGet("GetById")]
         public async Task<IActionResult> GetById(int id)
         {
             return Ok(await mediator.Send(new GetBiddingByIdQuery { Id = id }));
         }
+        [AllowAnonymous]
          [HttpPut("Update")]
         public async Task<IActionResult> Update( UpdateBiddingCommand command)
         {
-            
+            int currentUser=Convert.ToInt32(User.FindFirst("UserId")?.Value);
             return Ok(await mediator.Send(command));
         }
+        [AllowAnonymous]
           [HttpDelete("Delete")]
         public async Task<IActionResult> Delete(int id)
         {

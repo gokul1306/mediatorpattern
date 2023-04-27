@@ -8,6 +8,7 @@ namespace Mediator_pattern.CQRS
         public string productname { get; set; }
         public int price { get; set; }
         public string ShortDescription {get; set;}
+        public string DetailedDescription{get;set;}
         public string Category{get;set;}
         
         public DateTime BidEndDate{get;set;}
@@ -25,6 +26,7 @@ namespace Mediator_pattern.CQRS
                 product.StratingPrice = command.price;
                 product.Category = command.Category;
                 product.ShortDescription = command.ShortDescription;
+                product.DetailedDescription=command.DetailedDescription;
                 product.BidEndDate = command.BidEndDate;
 
                 context.Product.Add(product);

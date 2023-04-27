@@ -1,0 +1,32 @@
+<nav class="navbar bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand"><img src="../favicon.ico" alt=""> Product</a>
+      
+      <a  routerLink="/signin" routerLinkActive="active" class="navbar-brand content-right"><i
+        class="fa fa-address-card"></i>Sign up</a>
+    </div>
+</nav>
+<h3>Login Form</h3><br>
+    <div class="formcard">
+        <div class="row">
+            <div class="col-xs-12 " style="padding-left: 40px;">
+                <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+                    <div class="col-sm-8 form-group inputbox">
+                        <label >Email</label>
+                        <input  formControlName="email" type="text" id="productName" class="form-control">
+                    </div>
+                    <div class="col-sm-8 form-group inputbox">
+                        <label >Password</label>
+                        <input  formControlName="password" type="Password" id="bidAmount" class="form-control">
+                    </div><br>
+                    <div class="col-xs-12">
+                        <button  
+                          class="btn btn-dark pe-4 px-4 hover sidemovebutton" 
+                          type="submit">Login</button> &nbsp;
+                          <button  
+                          class="btn btn-dark pe-4 px-4 hover " 
+                          type="submit">Cancel</button>
+                      </div>
+                </form>
+            </div>
+        </div>

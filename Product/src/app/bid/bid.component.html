@@ -1,0 +1,24 @@
+<h3>Place a Bid</h3><br>
+<div class="formcard">
+    <div class="row">
+        <div class="col-xs-12 " style="padding-left: 40px;">
+            <form [formGroup]="BidForm" (ngSubmit)="onSubmit()">
+                <div class="col-sm-8 form-group inputbox">
+                    <label >ProductName</label>
+                    <input  formControlName="productName" type="text" id="productName" class="form-control">
+                </div>
+                <div class="col-sm-8 form-group inputbox">
+                    <label >BidAmount</label>
+                    <input  formControlName="bidAmount" type="number" id="bidAmount" class="form-control">
+                </div><br>
+                <div class="col-xs-12">
+                    <button  
+                      class="btn btn-dark pe-4 px-4 hover sidemovebutton" 
+                      type="submit">Place</button> &nbsp;
+                      <button  
+                      class="btn btn-dark pe-4 px-4 hover " 
+                      type="submit">Cancel</button>
+                  </div>
+            </form>
+        </div>
+    </div>
