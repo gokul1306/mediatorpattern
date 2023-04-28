@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Mediator_pattern.Controllers
 {
-    
+
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase

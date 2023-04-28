@@ -42,14 +42,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 );
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-
-
-// builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(options =>
 {
-    // var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    // options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {
         Name = "Authorization",
@@ -60,8 +54,8 @@ builder.Services.AddSwaggerGen(options =>
         Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 1safsfsdfdfd\"",
     });
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
- {
-     {
+    {
+        {
            new OpenApiSecurityScheme
              {
                  Reference = new OpenApiReference
@@ -71,8 +65,8 @@ builder.Services.AddSwaggerGen(options =>
                  }
              },
              new string[] {}
-     }
- });
+        }
+    });
 });
 var app = builder.Build();
 
@@ -82,21 +76,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors(builder =>
-
-{
-
-    builder
-
-    .AllowAnyOrigin()
-
-    .AllowAnyMethod()
-
-    .AllowAnyHeader();
-
+app.UseCors(builder =>{
+    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
 });
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

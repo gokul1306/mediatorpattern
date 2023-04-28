@@ -4,7 +4,7 @@
       
       <a  routerLink="/Addproduct" routerLinkActive="active" class="navbar-brand content-right"><i
         class="fa fa-address-card"></i>Add Product</a>
-        <a  routerLink="/" routerLinkActive="active" class="navbar-brand"><i
+        <a  routerLink="/" (click)="logout()"  routerLinkActive="active" class="navbar-brand"><i
           class="fa fa-address-card"></i>Log Out</a>
     </div>
 </nav>
@@ -16,10 +16,10 @@
   </form>
 </div>
 
-<div class="container pt-4">
+<div *ngIf="isShow" class="container pt-4">
   <div class="display-margin card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title">{{product.productName}} &nbsp;&ensp;&nbsp;&nbsp;&nbsp;&nbsp;&ensp;&nbsp;&nbsp; <button type="submit" (click)="delete()"><i class="bi bi-trash"></i></button></h5>
+      <h5 class="card-title">{{product.productName}} &nbsp;&ensp;&nbsp;&nbsp;&nbsp;&nbsp;&ensp;&nbsp;&nbsp;&nbsp;&ensp;&nbsp;&nbsp;&nbsp;&nbsp;&ensp;&nbsp;&nbsp; <button type="submit" (click)="delete()"><i class="bi bi-trash"></i></button></h5>
       <p class="card-text">{{product.shortDescription}}</p>
       <p class="card-text">{{product.detailedDescription}}</p>
     </div>
@@ -33,7 +33,7 @@
 <br>
 
 
-<div class="container pt-4">
+<div *ngIf="isShow" class="container pt-4">
   <table class="table  table-striped " style="width: 96%;height:max-content;">
     <thead>
         <tr class="text-center">
@@ -44,8 +44,11 @@
         </tr>
     </thead>
     <tbody>
-       <tr class="text-center">
-            
+       <tr *ngFor="let item of filter" class="text-center">
+            <td>{{item.bidAmount}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.phoneNumber}}</td>
         </tr>
     </tbody>
 </table>

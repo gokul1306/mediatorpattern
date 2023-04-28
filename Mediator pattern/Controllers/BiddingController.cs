@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Mediator_pattern.Controllers
 {
-    
-     [Route("api/[controller]")]
+    [Authorize]   
+    [Route("api/[controller]")]
     [ApiController]
     public class BiddingController : ControllerBase
     {
@@ -15,14 +15,16 @@ namespace Mediator_pattern.Controllers
         {
             mediator = _mediator;
         }
-       
-     [HttpGet("GetAll")]
+
+        [AllowAnonymous]
+        [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
             var result = await mediator.Send(new GetAllBiddingQuery());
             var answer = result.Select(Bidding => new{
                 id = Bidding.Id,
                 bidAmount = Bidding.BidAmount,
+                productId = Bidding.ProductId,
                 name = Bidding.User.FirstName,
                 email = Bidding.User.Email,
                 phoneNumber = Bidding.User.PhoneNumber,

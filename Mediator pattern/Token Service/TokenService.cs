@@ -25,6 +25,7 @@ namespace Mediator_pattern.TokenService
                         new Claim("Email",user.Email),
                         new Claim("UserId", user.Id.ToString()),
                         new Claim("UserName", user.FirstName!.ToString()),
+                        new Claim("Role", user.Role!.ToString())
                        
                     };
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -44,12 +45,10 @@ namespace Mediator_pattern.TokenService
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     ExpiryInMinutes = 360,
-                    
-                    // IsAdmin = user.RoleId == 10 ? true : false,
-                    // IsTAC = user.RoleId == 9 ? true : false,
-                    // IsManagement=user.Role!.IsManagement? true : false,
-                    UserName=user.FirstName,
-                    UserId=user.Id
+                    Name = user.FirstName,
+                    Id = user.Id,
+                    Email = user.Email,
+                    Role = user.Role,
                 };
                 return Result;
 

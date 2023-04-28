@@ -32,7 +32,6 @@
                 <label class="pb-3">Category</label>
                 <select formControlName="category" 
                     id="courseDesc" class="form-control form-control-lg" >
-                    <option selected>category</option>
                     <!-- <option selected>Global </option> -->
                     <option *ngFor="let item of option " value={{item.values}}>{{item.values}}</option>
                 </select>
