@@ -34,6 +34,17 @@
 
 
 <div *ngIf="isShow" class="container pt-4">
+  <button class="btn btn-outline-success" type="submit" (click)="isBidShow = !isBidShow">Place Bid</button>
+  <div *ngIf="isBidShow">
+    <div class="d-flex col-md-4 search-marginleft">
+      <label >BidAmount</label>&nbsp;&nbsp;
+      <input  [(ngModel)]="bidAmount" type="number" class="form-control me-2">
+      <button class="d-flex btn btn-outline-success" type="submit" (click)="placeBid()">Bid</button>
+    </div>
+    <div class="col-xs-12">
+      
+    </div>
+  </div>
   <table class="table  table-striped " style="width: 96%;height:max-content;">
     <thead>
         <tr class="text-center">

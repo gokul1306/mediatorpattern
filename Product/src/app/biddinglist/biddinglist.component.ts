@@ -15,6 +15,11 @@ export class BiddinglistComponent implements OnInit {
 
   isShow = false;
   isShowTable = false;
+  isBidShow = false;
+
+  once = true;
+
+  bidAmount: number = 0;
 
   ngOnInit(): void {
   }
@@ -46,6 +51,7 @@ export class BiddinglistComponent implements OnInit {
           this.bid = data;
           this.filter = this.bid.filter(x => x.productId == this.product.id);
           console.log(this.filter)
+          this.once = true;
         }
       )
       console.log(this.product);
@@ -56,6 +62,36 @@ export class BiddinglistComponent implements OnInit {
     this.http.delete<any>(`https://localhost:7213/api/Product/Delete?id=${this.searchText}`).subscribe();
     this.isShow = false;
     
+  }
+
+  bidder = {
+    id: 0,
+    userId: 0,
+    bidAmount: 0,
+    productId: 0
+  }
+
+  id = {
+    value: 0,
+    expiryInMinutes: ''
+  }
+
+  placeBid(){
+    if(this.once)
+    {
+      this.once = false;
+      this.bidder.bidAmount = this.bidAmount
+      this.bidder.productId = this.product.id
+      // @ts-ignore
+      this.id = JSON.parse(localStorage.getItem('Id'))
+      console.log(this.id.value)
+      this.bidder.userId = this.id.value
+      return this.http.post<any>('https://localhost:7213/api/Product/Create', this.bidder, { headers: this.headers }).subscribe({next: (data) => {}});
+    }
+    else
+    {
+      return ""
+    }
   }
 
   logout()
