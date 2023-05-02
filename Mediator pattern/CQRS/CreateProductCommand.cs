@@ -46,6 +46,8 @@ namespace Mediator_pattern.CQRS
         public string Email{get;set;}
         public string Password {get;set;}
         public string PhoneNumber{get;set;}
+
+        public string Role {get;set;}
         public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, int>
         {
             private readonly PDbcontext _context;
@@ -65,6 +67,7 @@ namespace Mediator_pattern.CQRS
                 User.Email = command.Email;
                 User.Password = command.Password;
                 User.PhoneNumber = command.PhoneNumber;
+                User.Role = command.Role;
 
                 _context.User.Add(User);
                 await _context.SaveChangesAsync();
