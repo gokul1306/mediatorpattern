@@ -24,6 +24,7 @@ export class SigninComponent implements OnInit {
     'city':[''],
     'state': [''],
     'pincode': [''],
+    'role' :['']
 
   });
   ngOnInit(): void {
