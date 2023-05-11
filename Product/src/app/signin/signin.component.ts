@@ -31,7 +31,7 @@ export class SigninComponent implements OnInit {
   }
   onSubmit(){
     console.log("--------",this.SigninForm)
-    return this.http.post<any>('https://localhost:7213/api/User/Create', this.SigninForm.value, { headers: this.headers }).subscribe();
+    return this.http.post<any>('https://localhost:7213/api/User/Create', this.SigninForm.value, { headers: this.headers }).subscribe({next: (data) => {data  ? this.router.navigate(['/']) : null}});
     
   }
 }
