@@ -65,7 +65,6 @@ export class BiddinglistComponent implements OnInit {
   }
 
   bidder = {
-    id: 0,
     userId: 0,
     bidAmount: 0,
     productId: 0
@@ -86,7 +85,8 @@ export class BiddinglistComponent implements OnInit {
       this.id = JSON.parse(localStorage.getItem('Id'))
       console.log(this.id.value)
       this.bidder.userId = this.id.value
-      return this.http.post<any>('https://localhost:7213/api/Product/Create', this.bidder, { headers: this.headers }).subscribe({next: (data) => {}});
+      console.log("---------",this.bidder)
+      return this.http.post<any>('https://localhost:7213/api/Bidding/Create', this.bidder, { headers: this.headers }).subscribe({next: (data) => {}});
     }
     else
     {

@@ -35,8 +35,7 @@ namespace Mediator_pattern.Controllers
         [HttpPost("Create")]
         public async Task<IActionResult> Create(CreateBiddingCommand command)
         {
-            int currentUser=Convert.ToInt32(User.FindFirst("UserId")?.Value);
-            command.UserId=currentUser;
+            
             return Ok(await mediator.Send(command));
         }
         [AllowAnonymous]

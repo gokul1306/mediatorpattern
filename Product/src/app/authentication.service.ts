@@ -24,7 +24,7 @@ export class AuthenticationService {
     expiryInMinutes = expiryInMinutes*60000;
     const item = {
       value: value,
- 
+            
       expiry: now.getTime() + expiryInMinutes,
     }
     localStorage.setItem(key, JSON.stringify(item))

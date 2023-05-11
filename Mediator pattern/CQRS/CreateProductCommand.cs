@@ -77,6 +77,7 @@ namespace Mediator_pattern.CQRS
     }
     public class CreateBiddingCommand : IRequest<int>
     {
+        public int Id{get;set;}
         public int UserId{ get; set; }
         public int ProductId{ get; set; }
         public int BidAmount{ get; set; }
@@ -90,6 +91,7 @@ namespace Mediator_pattern.CQRS
             public async Task<int> Handle(CreateBiddingCommand command, CancellationToken cancellationToken)
             {
                 var Bidding = new Bidding();
+                Bidding.Id=command.Id;
                 Bidding.UserId= command.UserId;
                 Bidding.ProductId = command.ProductId;
                 Bidding.BidAmount = command.BidAmount;
