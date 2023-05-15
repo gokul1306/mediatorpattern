@@ -86,7 +86,9 @@ export class BiddinglistComponent implements OnInit {
       console.log(this.id.value)
       this.bidder.userId = this.id.value
       console.log("---------",this.bidder)
-      return this.http.post<any>('https://localhost:7213/api/Bidding/Create', this.bidder, { headers: this.headers }).subscribe({next: (data) => {}});
+     this.http.post<any>('https://localhost:7213/api/Bidding/Create', this.bidder, { headers: this.headers }).subscribe({next: (data) => {}});
+    this.search();
+     return true;
     }
     else
     {
